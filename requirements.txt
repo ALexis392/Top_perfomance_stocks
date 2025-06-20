@@ -1,0 +1,34 @@
+# Análisis de Acciones S&P 500 - Requirements
+# ============================================
+
+# Core data manipulation and analysis
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Financial data download
+yfinance>=0.2.18
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Data scraping (for S&P 500 components from Wikipedia)
+lxml>=4.9.0
+html5lib>=1.1
+
+# Optional: For better performance and data handling
+openpyxl>=3.1.0              # Excel file support
+xlrd>=2.0.0                  # Excel file reading
+requests>=2.28.0             # HTTP requests
+beautifulsoup4>=4.12.0       # Web scraping backup
+
+# Optional: For advanced analysis
+scipy>=1.10.0                # Statistical functions
+scikit-learn>=1.3.0          # Machine learning (if extending analysis)
+
+# Development and testing (optional)
+jupyter>=1.0.0               # For notebook development
+ipykernel>=6.0.0             # Jupyter kernel
+
+# Performance optimization (optional)
+numba>=0.57.0                # JIT compilation for faster calculations
