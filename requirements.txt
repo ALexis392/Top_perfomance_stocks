@@ -1,34 +1,146 @@
-# Análisis de Acciones S&P 500 - Requirements
+# Enhanced Stock Analyzer - Requirements
+# =====================================
+# Analizador de acciones con cache inteligente, perfiles automáticos y DCA
+
+# ============================================
+# CORE DEPENDENCIES (OBLIGATORIAS)
 # ============================================
 
 # Core data manipulation and analysis
-pandas>=2.0.0
+pandas>=2.1.0
 numpy>=1.24.0
 
-# Financial data download
-yfinance>=0.2.18
+# Financial data download - CRÍTICO
+yfinance>=0.2.28
 
-# Visualization
+# Excel file support - OBLIGATORIO para reportes
+openpyxl>=3.1.2
+
+# Date and time handling - Para fechas dinámicas
+python-dateutil>=2.8.2
+
+# ============================================
+# CACHE Y PERSISTENCIA
+# ============================================
+
+# Parquet files for efficient caching - NUEVO
+pyarrow>=13.0.0              # Backend para .parquet (cache optimizado)
+fastparquet>=0.8.3           # Alternativa para .parquet
+
+# JSON handling (built-in json module is sufficient)
+
+# ============================================
+# VISUALIZACIÓN Y REPORTES
+# ============================================
+
+# Visualization (opcional para gráficos adicionales)
 matplotlib>=3.7.0
 seaborn>=0.12.0
+plotly>=5.15.0               # Para gráficos interactivos (opcional)
 
-# Data scraping (for S&P 500 components from Wikipedia)
-lxml>=4.9.0
+# ============================================
+# WEB SCRAPING Y DATA SOURCES
+# ============================================
+
+# HTTP requests and web scraping
+requests>=2.31.0
+lxml>=4.9.0                  # Para parsing XML/HTML
 html5lib>=1.1
-
-# Optional: For better performance and data handling
-openpyxl>=3.1.0              # Excel file support
-xlrd>=2.0.0                  # Excel file reading
-requests>=2.28.0             # HTTP requests
 beautifulsoup4>=4.12.0       # Web scraping backup
 
-# Optional: For advanced analysis
-scipy>=1.10.0                # Statistical functions
-scikit-learn>=1.3.0          # Machine learning (if extending analysis)
+# ============================================
+# ANÁLISIS ESTADÍSTICO AVANZADO
+# ============================================
 
-# Development and testing (optional)
-jupyter>=1.0.0               # For notebook development
-ipykernel>=6.0.0             # Jupyter kernel
+# Statistical functions - Para métricas avanzadas
+scipy>=1.11.0
 
-# Performance optimization (optional)
-numba>=0.57.0                # JIT compilation for faster calculations
+# Machine learning (para futuras extensiones)
+scikit-learn>=1.3.0          # Clustering de perfiles, predicciones
+
+# ============================================
+# PERFORMANCE Y OPTIMIZACIÓN
+# ============================================
+
+# JIT compilation for faster calculations
+numba>=0.58.0                # Acelera cálculos de métricas
+
+# Parallel processing
+joblib>=1.3.0                # Para procesamiento paralelo de lotes
+
+# Memory efficient data types
+pyarrow>=13.0.0              # Ya incluido arriba
+
+# ============================================
+# DEVELOPMENT Y TESTING (OPCIONAL)
+# ============================================
+
+# Jupyter development environment
+jupyter>=1.0.0
+ipykernel>=6.25.0
+notebook>=6.5.4
+
+# Testing framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code quality
+black>=23.7.0                # Code formatting
+flake8>=6.0.0                # Linting
+mypy>=1.5.0                  # Type checking
+
+# ============================================
+# ESPECIALIZADO PARA FINANZAS
+# ============================================
+
+# Additional financial libraries (opcional)
+quantlib>=1.31               # Análisis cuantitativo avanzado               
+pandas-datareader>=0.10.0    # Fuentes de datos adicionales
+
+# Risk management and portfolio optimization
+cvxpy>=1.3.0                 # Optimización de portafolio
+
+# ============================================
+# SPECIFIC VERSIONS FOR COMPATIBILITY
+# ============================================
+
+# Ensure compatibility between packages
+python-dateutil>=2.8.2,<3.0.0
+pytz>=2023.3                 # Timezone handling
+six>=1.16.0                  # Python 2/3 compatibility
+
+# ============================================
+# PLATFORM SPECIFIC (Windows/Mac/Linux)
+# ============================================
+
+# Windows specific (uncomment if needed)
+# pywin32>=306; sys_platform == "win32"
+
+# macOS specific (uncomment if needed)  
+# pyobjc-framework-Cocoa>=9.2; sys_platform == "darwin"
+
+# ============================================
+# MINIMUM PYTHON VERSION
+# ============================================
+# python_requires = ">=3.8"
+
+# ============================================
+# INSTALLATION NOTES
+# ============================================
+# 
+# INSTALACIÓN BÁSICA (mínimo funcionamiento):
+# pip install pandas numpy yfinance openpyxl pyarrow python-dateutil
+#
+# INSTALACIÓN COMPLETA:
+# pip install -r requirements.txt
+#
+# INSTALACIÓN OPTIMIZADA (sin desarrollo):
+# pip install pandas numpy yfinance openpyxl pyarrow scipy numba requests
+#
+# PROBLEMAS COMUNES:
+# - Si falla ta-lib: pip install --only-binary=all ta-lib
+# - Si falla pyarrow: pip install --upgrade pyarrow
+# - En M1 Mac: arch -arm64 pip install [package]
+#
+# VERIFICAR INSTALACIÓN:
+# python -c "import pandas, numpy, yfinance, openpyxl, pyarrow; print('✅ Core dependencies OK')"
